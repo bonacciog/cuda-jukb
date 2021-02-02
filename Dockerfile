@@ -9,6 +9,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     gpg
 
+# git
+RUN apt install git-all -y
+
+# FFmpeg
+RUN git clone https://github.com/FFmpeg/FFmpeg.git
+
+RUN apt-get install yasm
+RUN cd FFmpeg && ./configure && \
+    make && make install
+
 ## Cuda
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
