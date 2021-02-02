@@ -19,6 +19,9 @@ RUN apt-get install yasm
 RUN cd FFmpeg && ./configure && \
     make && make install
 
+# librosa
+RUN pip install librosa
+
 ## Cuda
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
