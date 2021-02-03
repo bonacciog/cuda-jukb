@@ -1,6 +1,6 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
-WORKDIR /home/jovyan
+WORKDIR /home/jovyan/app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
