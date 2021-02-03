@@ -20,6 +20,7 @@ RUN cd FFmpeg && ./configure && \
     make && make install
 
 # librosa
+RUN apt-get install libsndfile1
 RUN pip install librosa
 
 ## Cuda
