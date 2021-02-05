@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install libsndfile1-dev
 RUN pip install librosa
 
 WORKDIR /home/jovyan/app
+ADD /home/jovyan/app .
 # Kubeflow config
 # jupyter
 RUN pip install jupyterlab
