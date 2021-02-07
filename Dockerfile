@@ -1,5 +1,6 @@
 FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
+WORKDIR /home/jovyan/
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
@@ -18,13 +19,21 @@ RUN apt-get install yasm
 RUN cd FFmpeg && ./configure && \
     make && make install
 
+# python
+RUN apt update && apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt update && apt install python3.7 -y
+
+RUN apt-get install -y python3 python-dev python3-dev \
+    python-pip python3.7-dev python3-pip
+
 # librosa
 
 RUN apt-get update && apt-get install libsndfile1-dev
 RUN pip install librosa
 
-WORKDIR /home/jovyan/app
-ADD /home/jovyan/app .
+
+
 # Kubeflow config
 # jupyter
 RUN pip install jupyterlab
